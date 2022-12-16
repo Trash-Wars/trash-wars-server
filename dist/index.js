@@ -9,7 +9,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const routes_1 = __importDefault(require("./routes/routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 const uri = process.env.URI;
 console.log("URI: ", uri);
 mongoose_1.default.connect(uri);
