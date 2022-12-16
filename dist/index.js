@@ -11,6 +11,7 @@ dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = process.env.PORT;
 const uri = process.env.URI;
+console.log(uri);
 mongoose_1.default.connect(uri);
 app.use(express_1.default.json());
 app.use("/api/scores", routes_1.default);
