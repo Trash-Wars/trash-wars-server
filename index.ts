@@ -2,7 +2,6 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import router from "./routes/routes";
-import cors from "cors";
 
 dotenv.config();
 
@@ -12,13 +11,12 @@ const uri = process.env.URI;
 
 mongoose.connect(uri!);
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(express.json());
 app.use("/api/scores", router);
-app.use(
-  cors({
-    origin: "*",
-  })
-);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello world this is a test");
