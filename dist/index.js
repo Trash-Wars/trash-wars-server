@@ -14,6 +14,11 @@ const uri = process.env.URI;
 mongoose_1.default.connect(uri);
 app.use(express_1.default.json());
 app.use("/api/scores", routes_1.default);
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 app.get("/", (req, res) => {
     res.send("hello world this is a test");
 });
